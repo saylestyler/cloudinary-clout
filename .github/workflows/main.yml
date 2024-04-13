@@ -1,0 +1,49 @@
+# name: CI
+# on:
+#   - push
+#   - pull_request
+# jobs:
+#   test:
+#     name: Node.js ${{ matrix.node-version }}
+#     runs-on: ubuntu-latest
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         node-version:
+#           - 14
+#           - 12
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - run: npm install
+#       - run: npm test
+
+# name: Publish to npm
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v2
+
+#     - name: Use Node.js
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: '14' # TODO: determine lowest supported version
+#         registry-url: 'https://registry.npmjs.org/'
+
+#     - name: Install dependencies
+#       run: npm install
+
+#     - name: Publish to npm
+#       run: npm publish
+#       env:
+#         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
