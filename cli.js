@@ -18,9 +18,8 @@ cloudinary.config({
 })
 
 /**
- * QA:
  * 
- * watch mode:
+ * example syntax options; see readme for what each does
  * 
  * √ ./cloudinary_upload --watch
  * √ ./cloudinary_upload --watch --dir /Users/tyler/test-dir

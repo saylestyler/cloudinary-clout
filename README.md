@@ -1,62 +1,62 @@
-# cloutinary 
-
-> gimme a sec
+Cloutinary
 
 ## Install
 
 ```
-$ npm install --global cloutinary 
+npm install --g cloutinary 
 ```
 
-## Usage
+or 
 
 ```
-$ cloutinary --help
+npx cloutinary
+```
 
-  Usage
-    $ cloutinary [input]
+## usage 
 
-  Options
-    --postfix  Lorem ipsum  [Default: lorem]
 
-  Examples
-    $ cli-name
-    laura ipsume
-    $ cli-name ponies
-    lauren ipsuma
+## upload a single file
+
+```
+cloutinary img.png
+```
+
+# upload all images in a dir
+
+```
+cloutinary my-dir
+```
+
+(There are the flags `--file` and `--dir` but autodetection of those built in.)
+
+# watch mode
+
+This is what I wrote this code for initially. I wanted anything that was screenshotted (shooted?) to be uploaded to my media library. In general nowadays when I'm writing posts and need images on [my blog](https://www.tylersayles.com) I'll start it up. You can specify a watch `--dir` as well and [bind a custom key](/zsh-custom-command-example) so only certain screenshots are uploaded.
+
+```
+cloutinary --watch
 ```
 
 ## background watcher
 
-create a tmux session that is running `./cloudinary_upload` if you love to close entire triple tabbed terminal session(s) on the quotidian and are too lazy to figure out how to restore them heh:
+create a tmux session that is running `cloutinary --watch` if you love to close entire triple tabbed terminal session(s) on the daily and are too lazy to figure out how to restore them heh:
 
 ```sh
-(tmux &&) cd ~/repo && node cloudinary_upload && ctrl-b d
+(tmux &&) cd ~/repo && cloutinary && ctrl-b d
 ```
 
-## transformational arg example
+# upload processing flags
 
-here's a cl image url where you can see `ar_1.0,c_fill,h_250/bo_5px_solid_lightblue` following `/upload/`:
+For any of the above 3 commands, you can add `--copy` to save the url to your clipboard and/or `--delete`. The default behavior once a file(s) has been uploaded to rename the image in place. This is used in part if your paranoid, but also to avoid re-uploding a buncha files you already did. For example:
 
-`https://res.cloudinary.com/demo/image/upload/ar_1.0,c_fill,h_250/bo_5px_solid_lightblue/leather_bag_gray.jpg`
+```
+cloutinary --watch --dir /my-dear --copy --delete
+```
 
-where, ofc the original and unadulterated url was:
+This would watch the directory `/my-dir`, upload anything that is moved / appears there, copy the url to clipboard and delete the files once upload is successful.
 
-`https://res.cloudinary.com/demo/image/upload/leather_bag_gray.jpg`
+# watch configuration
 
-these two strings, separated by a forward slash, are an example of delivering the same image, this time with transformation parameters applied, so that the image is scaled down, cropped to fill a 250px square, with an aspect ratio of 1:1 = 1.0, and then a light blue border is applied:
+Cloutinary uses chokidar to watch files. There are some configuration values you may change if you so please. They are: 
 
-you can see a trillion more examples [here](https://cloudinary.com/documentation/transformation_reference) here's one of mine with a lot of options before & after, here the pink border was already around the image, anything beyond it is the result of the args above from my first job in nyc as an editor @ vfiles:
-
-<img alt="design dump photo" src="https://res.cloudinary.com/cloudimgts/image/upload/v1694462366/cli-upload/u6p5wn7fpnerysk9bliq.png" />
-
-and here's what the same img looks like with the arg string of `/c_fill,h_400,w_250/a_20/e_outline,co_brown/q_auto/f_auto/` added for which get this url & image:
-
-`https://res.cloudinary.com/cloudimgts/image/upload//c_fill,h_400,w_250/a_20/e_outline,co_brown/q_auto/f_auto/v1694462366/cli-upload/u6p5wn7fpnerysk9bliq.png`
-
-<img alt="design dump photo" src="https://res.cloudinary.com/cloudimgts/image/upload/c_fill,q_auto/a_500/e_outline,co_blue/q_auto/f_auto/v1694462366/cli-upload/u6p5wn7fpnerysk9bliq.png" />
-
-Basically art.
-
-
-
+TODO
