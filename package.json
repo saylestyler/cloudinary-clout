@@ -1,22 +1,39 @@
 {
-  "name": "cloudinary-uploader",
+  "name": "cloutinary",
   "version": "1.0.0",
-  "description": "upload images copied to osx clipboard",
+  "description": "Upload single image, an entire dir, or watch a dir and upload everything added to cloutindary.",
   "main": "cloudinary_uploader",
   "scripts": {
     "test": ""
   },
-  "keywords": [],
-  "author": "",
+  "bin": {
+    "cloutinary": "./cloutinary.js"
+  },
+  "keywords": [
+    "cloudinary",
+    "upload",
+    "image",
+    "video",
+    "file",
+    "watch",
+    "dir",
+    "cloutinary",
+    "cloutinary uploader",
+    "cloutinary upload",
+    "cloudinary uploader",
+    "cloudinary upload"
+  ],
+  "author": "Tyler Sayles",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "ava": "^6.1.2",
     "chokidar": "^3.0.2",
     "clipboardy": "^2.1.0",
     "cloudinary": "^1.41.3",
-    "shelljs": "^0.8.3"
-  },
-  "devDependencies": {
     "dotenv": "^16.3.1",
+    "shelljs": "^0.8.3",
+    "sinon": "^17.0.1",
+    "xo": "^0.58.0",
     "yargs": "^17.7.2"
   }
 }

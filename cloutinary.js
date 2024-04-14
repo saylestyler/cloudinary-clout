@@ -131,7 +131,7 @@ const WATCH_DIRECTORY = argv.dir || process.env.WATCH_DIRECTORY || `${process.en
 
 const uploadToCloudinary = async (filePath) => {
   try {
-    const response = await cloudinary
+     const response = await cloudinary
       .uploader.upload(filePath, { folder: 'cli-upload' });
     console.log(`uploaded ${filePath} to cloudinary: ${response.secure_url}`);
     return response;
@@ -231,4 +231,15 @@ if (argv.watch) {
   processPath(argv._[0]);
 } else {
   console.error('please provide a file or directory to process');
+}
+
+module.exports = {
+  getRenamePath,
+  processPath,
+  processFile,
+  uploadToCloudinary,
+  deleteFile,
+  renameAndMoveFile,
+  WATCH_CONFIG,
+  WATCH_DIRECTORY,
 }
